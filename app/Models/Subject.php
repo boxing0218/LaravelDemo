@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     /**
-
      * The attributes that are mass assignable.
-
      *
-
      * @var array
-
      */
 
     protected $fillable = [
-
         'name'
-
     ];
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    } 
 }
