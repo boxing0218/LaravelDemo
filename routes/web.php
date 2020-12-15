@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InspiringController;
+use App\Http\Controllers;
+use App\Models\Subject;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +26,10 @@ Route::get('/hello-world', function () {
 });
 Route::get('/about_us', function () {
     return view('about_us',['name' => 'Laravel  範例']);
-}); 
+});
 
 
-Route::get('/inspire', 'App\Http\Controllers\InspiringController@inspire'); 
+Route::get('/inspire', 'App\Http\Controllers\InspiringController@inspire');
 
 
 Route::get('/test', function(){
@@ -44,8 +47,8 @@ Route::get('/add', function(){
     $post = new App\Models\Post;
      $post->content = 'Laravel demo 123456';
      $post->save();
-     return $post; 
- }); 
+     return $post;
+ });
 
  Route::get('/delete', function(){
     $post = App\Models\Post::find(1);
@@ -55,46 +58,54 @@ Route::get('/add', function(){
 Route::get('/mass delete', function(){
     $posts = App\Models\Post::destroy([2, 3]);
     return $posts;
-}); 
+});
 
 Route::get('/add1', function(){
     $post = new App\Models\Post;
     $post->subject_id=1;
      $post->content = 'UUUUUU';
+     $post->user_id = 1;
      $post->save();
-     return $post; 
- }); 
+     return $post;
+ });
 
  Route::get('/add2', function(){
     $post = new App\Models\Post;
     $post->subject_id=2;
      $post->content = 'JIEUN';
+     $post->user_id = 1;
      $post->save();
-     return $post; 
- }); 
+     return $post;
+ });
 
  Route::get('/sub1', function(){
     $post = new App\Models\Subject;
     $post->subject_id=1;
      $post->name = '電腦';
      $post->save();
-     return $post; 
+     return $post;
  });
- 
+
  Route::get('/sub2', function(){
     $post = new App\Models\Subject;
     $post->subject_id=1;
      $post->name = 'network';
      $post->save();
-     return $post; 
+     return $post;
  });
 
  Route::get('/get1', function(){
     $subject = Subject::find(1);
     $posts = $subject->posts;
     return $posts;
-}); 
+});
 
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('posts', 'App\Http\Controllers\PostController');
 
 Auth::routes();
 
