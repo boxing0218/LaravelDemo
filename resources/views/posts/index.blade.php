@@ -13,7 +13,13 @@
         </a>
         <p class="px-3">
             {{$post->created_at}} 由 {{$post->user->name ?? 'defaultUrl'}} 分享
+            <br>
+            於{{$post->updated_at}} 修改了此文章
         </p>
+        {{-- <br>
+        <p class="px-3">
+            於{{$post->updated_at}} 修改此文章
+        </p> --}}
         <hr />
     @endforeach
     <div>

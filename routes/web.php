@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    $posts = Post::orderBy('id')->paginate(4);
+    $posts = Post::orderBy('id','desc')->paginate(4);
     return view('posts.index', ['posts' =>$posts]);
     // return view('posts.index',['posts' => Post::cursor()]);
 });
