@@ -10,19 +10,15 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('posts.update', [ 'post' => $post]) }}" method="POST" class="py-2 px-4">
+    <form action="{{ route('subjects.update', [ 'subject' => $subject]) }}" method="POST" class="py-2 px-4">
         @method('PUT')
         @csrf
-        <label>標題:</label>
-            <input type="text" value="{{$post->title}}" name="title" class="border border-dark">
-        <br>
-        <label>內容:
-            <textarea name="content">{{ $post->content }}</textarea>
-        </label>
+        <label>類型:</label>
+            <input type="text" value="{{$subject->name}}" name="name" class="border border-dark">
         <br>
         <input type="submit" value="送出文章">
     </form>
-    <form action="{{ route('posts.destroy', [ 'post' => $post]) }}" method="POST" class="py-2 px-4">
+    <form action="{{ route('subjects.destroy', [ 'subject' => $subject]) }}" method="POST" class="py-2 px-4">
         @method('DELETE')
         @csrf
         <input type="submit" value="刪除文章">

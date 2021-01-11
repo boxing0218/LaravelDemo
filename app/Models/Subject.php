@@ -14,7 +14,8 @@ class Subject extends Model
      */
 
     protected $fillable = [
-        'name'
+        'name',
+        'id',
     ];
 
     /**
@@ -24,5 +25,5 @@ class Subject extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
-    } 
+    }
 }
